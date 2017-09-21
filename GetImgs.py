@@ -9,10 +9,6 @@ import os
 import re
 import urllib.request
 from selenium import webdriver
-#from selenium.webdriver.common.keys import Keys
-#from selenium.webdriver.common.by import By
-#from selenium.webdriver.support.ui import WebDriverWait 
-#from selenium.webdriver.support import expected_conditions as EC 
 
 driver = webdriver.Firefox()
 with open ('urls.txt', mode = 'r') as file:
@@ -30,13 +26,9 @@ for line in lines:
             imgUrl = src
     
     imgUrl = imgUrl.replace("true", "false")
-    
     Expression = re.compile('/\w*@')
-    
     SearchObject = Expression.search(imgUrl)
-    
     FoundString = SearchObject.group()
-    
     FoundString = FoundString.replace('/', '')
     PN = FoundString.replace('@', '')
     
