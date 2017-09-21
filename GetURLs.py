@@ -12,7 +12,7 @@ from selenium.webdriver.common.by import By
 from selenium.webdriver.support.ui import WebDriverWait 
 from selenium.webdriver.support import expected_conditions as EC 
 
-entries = 25
+entries = 25 #sets the number of entries to be extracted
 
 driver = webdriver.Firefox()
 driver.get('https://patentscope.wipo.int/search/en/search.jsf')
