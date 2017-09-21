@@ -37,7 +37,6 @@ def grablinks(n):
         Expression = re.compile('detail\.jsf\?docId=\w*&amp')
         SearchObject = Expression.search(str(url))
         FoundString = SearchObject.group()
-            
         FoundString = FoundString.replace('&amp', '')
         url = 'https://patentscope.wipo.int/search/en/' + FoundString
         with open ('urls.txt', mode = 'a') as file:
