@@ -21,18 +21,16 @@ search.clear()
 search.send_keys('Formula (I)')
 search.send_keys(Keys.RETURN)
 
-
 element = WebDriverWait(driver, 10).until(EC.presence_of_element_located((
         By.ID, 'resultTable:0:resultListTableColumnLink')))
 
-ids = []
 open('urls.txt', 'w').close()
 
 def grablinks(n):
     for i in range (n):
         
-        ids.append ( 'resultTable:' + str(i) + ':resultListTableColumnLink')
-        linkElement = driver.find_element_by_id(ids[i])
+        linkElement = driver.find_element_by_id(
+                'resultTable:' + str(i) + ':resultListTableColumnLink')
         url = linkElement.get_attribute('outerHTML')
         Expression = re.compile('detail\.jsf\?docId=\w*&amp')
         SearchObject = Expression.search(str(url))
@@ -42,12 +40,10 @@ def grablinks(n):
         with open ('urls.txt', mode = 'a') as file:
             file.write (url + '\n') 
 
-
 def nextpage():
     nextElement = driver.find_element_by_xpath(
             "//*[contains(text(), 'next')]")
-    nextElement.click()
-           
+    nextElement.click()       
 
 while entries > 10:
     grablinks(10)
